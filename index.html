@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>مترجم اللغة الألمانية والعربية</title>
+    <link rel="stylesheet" href="CSS/styles.css">
+    <meta charset="UTF-8">
+    <!-- logic inside script tag (JavaScript) -->
+    <script>
+        // Dictionary with 150 Arabic-German word pairs
+        const dictionary = {
+            // Arabic to German
+            "مرحبا": "Hallo",
+            "شكرا": "Danke",
+            "من فضلك": "Bitte",
+            "نعم": "Ja",
+            "لا": "Nein",
+            "صباح الخير": "Guten Morgen",
+            "مساء الخير": "Guten Abend",
+            "إلى اللقاء": "Auf Wiedersehen",
+            "كيف حالك": "Wie geht es dir",
+            "أحبك": "Ich liebe dich",
+            "عذرا": "Entschuldigung",
+            "ماء": "Wasser",
+            "خبز": "Brot",
+            "صديق": "Freund",
+            "عائلة": "Familie",
+            "مدرسة": "Schule",
+            "عمل": "Arbeit",
+            "منزل": "Haus",
+            "سيارة": "Auto",
+            "كتاب": "Buch",
+            "قلم": "Stift",
+            "طاولة": "Tisch",
+            "كرسي": "Stuhl",
+            "باب": "Tür",
+            "نافذة": "Fenster",
+            "هاتف": "Telefon",
+            "حاسوب": "Computer",
+            "طعام": "Essen",
+            "شراب": "Getränk",
+            "مطعم": "Restaurant",
+            "مقهى": "Café",
+            "فندق": "Hotel",
+            "مطار": "Flughafen",
+            "محطة": "Bahnhof",
+            "شارع": "Straße",
+            "مدينة": "Stadt",
+            "قرية": "Dorf",
+            "بلد": "Land",
+            "عالم": "Welt",
+            "رجل": "Mann",
+            "امرأة": "Frau",
+            "ولد": "Junge",
+            "بنت": "Mädchen",
+            "طفل": "Kind",
+            "أب": "Vater",
+            "أم": "Mutter",
+            "أخ": "Bruder",
+            "أخت": "Schwester",
+            "يوم": "Tag",
+            "ليلة": "Nacht",
+            "صباح": "Morgen",
+            "مساء": "Abend",
+            "أسبوع": "Woche",
+            "شهر": "Monat",
+            "سنة": "Jahr",
+            "وقت": "Zeit",
+            "ساعة": "Uhr",
+            "دقيقة": "Minute",
+            "ثانية": "Sekunde",
+            "جميل": "schön",
+            "كبير": "groß",
+            "صغير": "klein",
+            "قوي": "stark",
+            "ضعيف": "schwach",
+            "سريع": "schnell",
+            "بطيء": "langsam",
+            "ساخن": "heiß",
+            "بارد": "kalt",
+            "جديد": "neu",
+            "قديم": "alt",
+            "مفتوح": "offen",
+            "مغلق": "geschlossen",
+            "سعيد": "glücklich",
+            "حزين": "traurig",
+            "صحي": "gesund",
+            "مريض": "krank",
+            "غني": "reich",
+            "فقير": "arm",
+            "أحمر": "rot",
+            "أخضر": "grün",
+            "أزرق": "blau",
+            "أصفر": "gelb",
+            "أسود": "schwarz",
+            "أبيض": "weiß",
+            "رقم": "Nummer",
+            "واحد": "eins",
+            "اثنان": "zwei",
+            "ثلاثة": "drei",
+            "أربعة": "vier",
+            "خمسة": "fünf",
+            "ستة": "sechs",
+            "سبعة": "sieben",
+            "ثمانية": "acht",
+            "تسعة": "neun",
+            "عشرة": "zehn",
+            "يأكل": "essen",
+            "يشرب": "trinken",
+            "ينام": "schlafen",
+            "يستيقظ": "aufwachen",
+            "يذهب": "gehen",
+            "يأتي": "kommen",
+            "يتكلم": "sprechen",
+            "يسمع": "hören",
+            "يرى": "sehen",
+            "يقرأ": "lesen",
+            "يكتب": "schreiben",
+            "يعمل": "arbeiten",
+            "يلعب": "spielen",
+            "يفكر": "denken",
+            "يحب": "lieben",
+            "يكره": "hassen",
+            "يفهم": "verstehen",
+            "يعرف": "wissen",
+            "يتعلم": "lernen",
+            "يعلم": "lehren",
+            "يساعد": "helfen",
+            "يسأل": "fragen",
+            "يجيب": "antworten",
+            "يبدأ": "beginnen",
+            "ينتهي": "enden",
+            "يبيع": "verkaufen",
+            "يشتري": "kaufen",
+            "يفتح": "öffnen",
+            "يغلق": "schließen",
+            "اليوم": "heute",
+            "غدا": "morgen",
+            "أمس": "gestern",
+            "الآن": "jetzt",
+            "قريبا": "bald",
+            "لاحقا": "später",
+            "دائما": "immer",
+            "أبدا": "nie",
+            "غالبا": "oft",
+            "أحيانا": "manchmal",
+            "نادرا": "selten",
+            "هنا": "hier",
+            "هناك": "dort",
+            "فوق": "oben",
+            "تحت": "unten",
+            "يمين": "rechts",
+            "يسار": "links",
+            "داخل": "innen",
+            "خارج": "außen",
+            "أمام": "vor",
+            "خلف": "hinter",
+            "قريب": "nah",
+            "بعيد": "fern",
+            "سهل": "einfach",
+            "صعب": "schwer",
+            "جامعة": "Universität",
+            "مكتبة": "Bibliothek",
+            "متجر": "Geschäft"
+        };
+        
+        // German to Arabic (reversed dictionary)
+        const reverseDictionary = {};
+        for (let arabicWord in dictionary) {
+            reverseDictionary[dictionary[arabicWord].toLowerCase()] = arabicWord;
+        }
+        
+        let isArabicToGerman = true;
+        
+        function translateText() {
+            let inputText, resultElement;
+            
+            if (isArabicToGerman) {
+                inputText = document.getElementById("arabicText").value.trim();
+                resultElement = document.getElementById("germanResult");
+                
+                if (inputText in dictionary) {
+                    resultElement.textContent = dictionary[inputText];
+                } else {
+                    resultElement.textContent = "Keine Übersetzung gefunden!";
+                }
+            } else {
+                inputText = document.getElementById("germanText").value.trim().toLowerCase();
+                resultElement = document.getElementById("arabicResult");
+                
+                if (inputText in reverseDictionary) {
+                    resultElement.textContent = reverseDictionary[inputText];
+                } else {
+                    resultElement.textContent = "لم يتم العثور على ترجمة!";
+                }
+            }
+            
+            return false;
+        }
+        
+        function switchLanguages() {
+            isArabicToGerman = !isArabicToGerman;
+            
+            const directionIndicator = document.getElementById("directionIndicator");
+            const arabicSection = document.getElementById("arabicSection");
+            const germanSection = document.getElementById("germanSection");
+            
+            if (isArabicToGerman) {
+                directionIndicator.textContent = "من العربية إلى الألمانية";
+                arabicSection.querySelector("h3").textContent = "النص العربي";
+                germanSection.querySelector("h3").textContent = "الترجمة الألمانية";
+                
+                document.getElementById("arabicText").style.display = "block";
+                document.getElementById("arabicResult").style.display = "none";
+                document.getElementById("germanText").style.display = "none";
+                document.getElementById("germanResult").style.display = "block";
+                
+                document.getElementById("germanResult").textContent = "Die Übersetzung wird hier angezeigt...";
+            } else {
+                directionIndicator.textContent = "من الألمانية إلى العربية";
+                arabicSection.querySelector("h3").textContent = "الترجمة العربية";
+                germanSection.querySelector("h3").textContent = "النص الألماني";
+                
+                document.getElementById("arabicText").style.display = "none";
+                document.getElementById("arabicResult").style.display = "block";
+                document.getElementById("germanText").style.display = "block";
+                document.getElementById("germanResult").style.display = "none";
+                
+                document.getElementById("arabicResult").textContent = "ستظهر الترجمة هنا...";
+            }
+        }
+        
+        function showDictionary() {
+            const modal = document.getElementById("dictionaryModal");
+            modal.style.display = "block";
+            
+            const dictionaryList = document.getElementById("dictionaryList");
+            dictionaryList.innerHTML = "";
+            
+            // Convert dictionary to array for sorting
+            const sortedWords = Object.entries(dictionary).sort((a, b) => a[0].localeCompare(b[0], 'ar'));
+            
+            // Create dictionary entries
+            for (let [arabic, german] of sortedWords) {
+                const listItem = document.createElement("div");
+                listItem.className = "dictionary-item";
+                listItem.innerHTML = `<span class="arabic-word">${arabic}</span> - <span class="german-word">${german}</span>`;
+                dictionaryList.appendChild(listItem);
+            }
+        }
+        
+        function closeModal() {
+            document.getElementById("dictionaryModal").style.display = "none";
+        }
+    </script>
+</head>
+<body>
+    <div class="container">
+    
+        <header>
+            <h1>مترجم اللغة العربية-الألمانية</h1>
+        </header>
+        
+        <div class="action-buttons">
+            <button class="direction-btn" onclick="switchLanguages()">
+                <span id="directionIndicator">من العربية إلى الألمانية</span>
+                <span class="icon">⇌</span>
+            </button>
+            <button class="dictionary-btn" onclick="showDictionary()">مفردات شائعة</button>
+        </div>
+        
+        <div class="translation-container">
+            <div id="arabicSection" class="input-section">
+                <h3>النص العربي</h3>
+                <textarea id="arabicText" dir="rtl" placeholder="أدخل النص بالعربية هنا..."></textarea>
+                <div id="arabicResult" class="result-box" dir="rtl" style="display: none;">ستظهر الترجمة هنا...</div>
+            </div>
+            
+            <div id="germanSection" class="output-section">
+                <h3>الترجمة الألمانية</h3>
+                <textarea id="germanText" dir="ltr" placeholder="Geben Sie hier den deutschen Text ein..." style="display: none;"></textarea>
+                <div id="germanResult" class="result-box" dir="ltr">Die Übersetzung wird hier angezeigt...</div>
+            </div>
+        </div>
+        
+        <div class="translate-button-container">
+            <button class="translate-btn" onclick="translateText()">ترجم</button>
+        </div>
+        
+        <!-- Dictionary Modal -->
+        <div id="dictionaryModal" class="modal">
+            <div class="modal-content">
+                <span class="close-button" onclick="closeModal()">&times;</span>
+                <h2>قاموس المفردات</h2>
+                <div class="dictionary-search">
+                    <input type="text" id="searchDictionary" placeholder="ابحث عن كلمة...">
+                </div>
+                <div id="dictionaryList" class="dictionary-list">
+                    <!-- Dictionary entries will be inserted here -->
+                </div>
+            </div>
+        </div>
+        
+        <footer>
+            <h3>تم إنشاؤه بواسطة:</h3>
+            <div class="authors-grid">
+                <div class="author-card">
+                    <p class="author-name"> محمود رضا شحاته على</p>
+                    <p class="author-id">ID: 92310045</p>
+                </div>
+                <div class="author-card">
+                    <p class="author-name">محمد سالم على النقراشي</p>
+                    <p class="author-id">ID: 92210029</p>
+                </div>
+                <div class="author-card">
+                    <p class="author-name">احمد الصافي عبد الله الحليم</p>
+                    <p class="author-id">ID: 92210180</p>
+                </div>
+                <div class="author-card">
+                    <p class="author-name">كمال خالد كمال</p>
+                    <p class="author-id">ID: لم يتم تحديد </p>
+                </div>
+            </div>
+        </footer>
+    </div>
+</body>
+</html>
